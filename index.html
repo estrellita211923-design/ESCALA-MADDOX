@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escala de Evaluación de Flebitis - Infusion Nurses Society</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
+    
+    body {
+      font-family: 'Fredoka', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(270deg, #dcf8ff, #7dd3fc, #dcf8ff);
+      background-size: 600% 600%;
+      animation: WaterFlow 20s ease infinite;
+    }
+
+    @keyframes WaterFlow {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+
+    .main-card {
+      width: 90%;
+      max-width: 1300px;
+      min-height: 85vh;
+      background-color: rgba(255, 255, 255, 0.93);
+      backdrop-filter: blur(10px);
+      border-radius: 3rem;
+      padding: 3rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      margin-top: 3vh;
+      margin-bottom: 3vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .custom-radio {
+      accent-color: #0284c7;
+      width: 1.25rem;
+      height: 1.25rem;
+      cursor: pointer;
+    }
+
+    .grade-card {
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .grade-card:hover {
+      transform: translateY(-3px) scale(1.01);
+    }
+  </style>
+</head>
+<body class="py-4 px-4 flex flex-col items-center">
+
+  <div class="main-card">
+    
+    <!-- Encabezado y Fundamentación Clínica -->
+    <div class="text-center mb-8">
+      <h1 class="text-3xl md:text-5xl font-extrabold text-sky-900 tracking-wide uppercase drop-shadow-sm">
+        Escala Visual de Flebitis
+      </h1>
+      <p class="text-slate-600 mt-2 text-base md:text-lg max-w-4xl mx-auto">
+        <strong>Fundamentación Clínica:</strong> Basada en los estándares de la <em>Infusion Nurses Society (INS)</em>. Esta herramienta clínica estandarizada evalúa la presencia, grado y severidad de la inflamación de la capa íntima de la vena (flebitis) asociada a catéteres venosos periféricos en pacientes hospitalizados.
+      </p>
+    </div>
+
+    <!-- Sección Informativa: Ficha Técnica -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+      <div class="bg-sky-50/90 p-4 rounded-2xl border border-sky-200">
+        <span class="text-xs font-bold text-sky-800 uppercase tracking-wider block mb-1">🎯 Objetivo</span>
+        <p class="text-xs text-slate-700">Detectar oportunamente signos de inflamación venosa y guiar la toma de decisiones clínicas para retirar o reubicar el catéter.</p>
+      </div>
+
+      <div class="bg-sky-50/90 p-4 rounded-2xl border border-sky-200">
+        <span class="text-xs font-bold text-sky-800 uppercase tracking-wider block mb-1">👥 Población</span>
+        <p class="text-xs text-slate-700">Pacientes adultos y pediátricos con terapia infusional o acceso venoso periférico instalado.</p>
+      </div>
+
+      <div class="bg-sky-50/90 p-4 rounded-2xl border border-sky-200">
+        <span class="text-xs font-bold text-sky-800 uppercase tracking-wider block mb-1">📐 Dimensiones</span>
+        <p class="text-xs text-slate-700">Eritema, dolor en el sitio de inserción, edema, cordón venoso palpable y drenaje purulento.</p>
+      </div>
+
+      <div class="bg-sky-50/90 p-4 rounded-2xl border border-sky-200">
+        <span class="text-xs font-bold text-sky-800 uppercase tracking-wider block mb-1">💡 Finalidad Clínica</span>
+        <p class="text-xs text-slate-700">Prevenir complicaciones graves como bacteriemia secundaria, tromboflebitis séptica y pérdida de acceso vascular.</p>
+      </div>
+    </div>
+
+    <!-- Contenido Principal: Opciones de la Escala + Panel de Resultados -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start flex-grow">
+      
+      <!-- Columna Izquierda: Instrucciones y Grados 0 a 5 -->
+      <div class="lg:col-span-8 flex flex-col gap-4 max-h-[580px] overflow-y-auto pr-3">
+        
+        <div class="bg-slate-100 p-4 rounded-2xl border border-slate-200 mb-2">
+          <h3 class="font-bold text-slate-800 text-sm mb-1">📋 Instrucciones de Aplicación:</h3>
+          <p class="text-xs text-slate-600">Inspeccione visualmente y palpe suavemente el sitio de inserción del catéter venoso periférico. Seleccione la casilla correspondiente a la manifestación clínica observada en el paciente.</p>
+        </div>
+
+        <!-- Grado 0 -->
+        <label onclick="updatePhlebitis(0)" class="grade-card cursor-pointer bg-emerald-50 hover:bg-emerald-100/80 border-2 border-emerald-300 rounded-2xl p-4 flex items-start gap-4 shadow-sm">
+          <input type="radio" name="phlebitis-grade" value="0" class="custom-radio mt-1" checked>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-extrabold text-emerald-900 text-lg">Grado 0: Sin signos de flebitis</span>
+            </div>
+            <p class="text-slate-700 text-sm mt-1">Sitio de inserción totalmente asintomático. Sin dolor, eritema ni edema. El acceso vascular funciona normalmente.</p>
+          </div>
+        </label>
+
+        <!-- Grado 1 -->
+        <label onclick="updatePhlebitis(1)" class="grade-card cursor-pointer bg-yellow-50 hover:bg-yellow-100/80 border-2 border-yellow-300 rounded-2xl p-4 flex items-start gap-4 shadow-sm">
+          <input type="radio" name="phlebitis-grade" value="1" class="custom-radio mt-1">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-extrabold text-yellow-900 text-lg">Grado 1: Flebitis Leve / Inicial</span>
+            </div>
+            <p class="text-slate-700 text-sm mt-1">Eritema localizado en el sitio de inserción con o sin presencia de dolor en la zona.</p>
+          </div>
+        </label>
+
+        <!-- Grado 2 -->
+        <label onclick="updatePhlebitis(2)" class="grade-card cursor-pointer bg-orange-50 hover:bg-orange-100/80 border-2 border-orange-300 rounded-2xl p-4 flex items-start gap-4 shadow-sm">
+          <input type="radio" name="phlebitis-grade" value="2" class="custom-radio mt-1">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-extrabold text-orange-900 text-lg">Grado 2: Flebitis Moderada</span>
+            </div>
+            <p class="text-slate-700 text-sm mt-1">Dolor en el sitio de inserción acompañado de eritema y/o edema leve en la zona del catéter.</p>
+          </div>
+        </label>
+
+        <!-- Grado 3 -->
+        <label onclick="updatePhlebitis(3)" class="grade-card cursor-pointer bg-rose-50 hover:bg-rose-100/80 border-2 border-rose-300 rounded-2xl p-4 flex items-start gap-4 shadow-sm">
+          <input type="radio" name="phlebitis-grade" value="3" class="custom-radio mt-1">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-extrabold text-rose-900 text-lg">Grado 3: Flebitis Severa</span>
+            </div>
+            <p class="text-slate-700 text-sm mt-1">Dolor en el sitio de inserción con eritema y/o edema. Formación de un cordón venoso palpable en el trayecto de la vena.</p>
+          </div>
+        </label>
+
+        <!-- Grado 4 -->
+        <label onclick="updatePhlebitis(4)" class="grade-card cursor-pointer bg-red-100 hover:bg-red-200/80 border-2 border-red-400 rounded-2xl p-4 flex items-start gap-4 shadow-sm">
+          <input type="radio" name="phlebitis-grade" value="4" class="custom-radio mt-1">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-extrabold text-red-950 text-lg">Grado 4: Flebitis Grave / Avanzada</span>
+            </div>
+            <p class="text-slate-700 text-sm mt-1">Dolor en el sitio de inserción con eritema y/o edema. Cordón venoso palpable de más de 2.5 cm de longitud con drenaje purulento evidente.</p>
+          </div>
+        </label>
+
+      </div>
+
+      <!-- Columna Derecha: Panel de Diagnóstico y Plan de Acción -->
+      <div class="lg:col-span-4 sticky top-4">
+        <div id="result-card" class="bg-emerald-50 border-2 border-emerald-300 rounded-3xl p-6 shadow-md transition-all duration-300 flex flex-col items-center text-center">
+          <span class="text-xs uppercase font-bold tracking-widest text-slate-400 mb-1">Clasificación Automática</span>
+          
+          <div class="text-5xl font-extrabold text-slate-800 my-2" id="grade-display">Grado 0</div>
+          
+          <div class="w-full my-3 border-t border-slate-200"></div>
+
+          <span id="status-badge" class="px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider bg-emerald-200 text-emerald-800 mb-3">
+            Sin Flebitis
+          </span>
+
+          <h3 class="text-xl font-extrabold text-slate-800 mb-2" id="action-title">Sin Intervención Requerida</h3>
+          
+          <p class="text-slate-600 text-sm leading-relaxed mb-4" id="action-desc">
+            Mantener el catéter venoso periférico en observación. Continuar con la curación estandarizada cada 72 horas o según protocolo institucional.
+          </p>
+
+          <div class="bg-white/80 p-3 rounded-2xl w-full text-left border border-slate-200">
+            <span class="text-xs font-bold text-slate-500 uppercase block mb-1">Intervención Recomendada:</span>
+            <p class="text-xs font-semibold text-slate-700" id="intervention-text">Puncionar sólo si existe indicación médica. Monitorizar en cada turno.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Advertencia Ética, Privacidad y Responsabilidad Clínica -->
+    <div class="mt-8 bg-amber-50/90 border border-amber-200 rounded-2xl p-4 text-xs text-amber-900 leading-relaxed">
+      <strong>🔒 Consideraciones Éticas y Privacidad del Paciente:</strong> Esta aplicación web interactiva es exclusivamente una herramienta de apoyo para la valoración clínica y académica. <strong>No solicita, almacena ni transmite ningún tipo de dato personal sensible del paciente</strong>, garantizando la privacidad y seguridad de la información médica conforme a las regulaciones de confidencialidad en salud.
+    </div>
+
+  </div>
+
+  <!-- Pie de página con tus créditos -->
+  <footer class="text-center text-slate-600 font-medium py-3 px-8 rounded-full bg-white/70 backdrop-blur-sm shadow-inner mb-4">
+    Desarrollado por <span class="font-bold text-sky-600">SANDRA ESTRELLITA MOSSO BRUNO</span>
+  </footer>
+
+  <!-- Referencia Bibliográfica requerida -->
+  <div class="max-w-4xl text-center text-xs text-slate-500 pb-6 px-4">
+    <strong>Referencia bibliográfica:</strong> W3Schools. (s. f.). HTML CSS. Recuperado el 29 de octubre de 2026, de https://www.w3schools.com/html/html_css.asp
+  </div>
+
+  <script>
+    const phlebitisData = {
+      0: {
+        grade: "Grado 0",
+        badge: "Sin Flebitis",
+        badgeStyle: "bg-emerald-200 text-emerald-800",
+        cardStyle: "bg-emerald-50 border-2 border-emerald-300 rounded-3xl p-6 shadow-md transition-all duration-300 flex flex-col items-center text-center",
+        title: "Sin Intervención Requerida",
+        desc: "El sitio de punción no presenta inflamación ni signos de irritación. El catéter es seguro y se encuentra normofuncional.",
+        intervention: "Continuar con la observación periódica en cada turno y realizar cuidados estandarizados del sitio de inserción."
+      },
+      1: {
+        grade: "Grado 1",
+        badge: "Flebitis Leve",
+        badgeStyle: "bg-yellow-200 text-yellow-800",
+        cardStyle: "bg-yellow-50 border-2 border-yellow-300 rounded-3xl p-6 shadow-md transition-all duration-300 flex flex-col items-center text-center",
+        title: "Observación Estrecha",
+        desc: "Presencia de eritema o dolor inicial. Requiere monitoreo continuo para evaluar la progresión del síntoma.",
+        intervention: "Evaluar la necesidad de mantener la vía. Si persiste la molestia por más de 24 horas, considerar el retiro del catéter."
+      },
+      2: {
+        grade: "Grado 2",
+        badge: "Flebitis Moderada",
+        badgeStyle: "bg-orange-200 text-orange-800",
+        cardStyle: "bg-orange-50 border-2 border-orange-300 rounded-3xl p-6 shadow-md transition-all duration-300 flex flex-col items-center text-center",
+        title: "Retiro de Catéter Indicado",
+        desc: "Existe eritema con dolor local y/o edema. Inicios de proceso inflamatorio evidente.",
+        intervention: "Retirar inmediatamente el catéter venoso periférico. Instalar un nuevo acceso en la extremidad opuesta si se requiere mantener infusión."
+      },
+      3: {
+        grade: "Grado 3",
+        badge: "Flebitis Severa",
+        badgeStyle: "bg-rose-200 text-rose-800",
+        cardStyle: "bg-rose-50 border-2 border-rose-300 rounded-3xl p-6 shadow-md transition-all duration-300 flex flex-col items-center text-center",
+        title: "Retiro Inmediato y Tratamiento Local",
+        desc: "Inflamación severa con presencia de cordón venoso palpable a lo largo del trayecto venoso.",
+        intervention: "Retirar el catéter de inmediato. Aplicar compresas húmedas tibias en la zona afectada y elevar la extremidad. Notificar al médico tratante."
+      },
+      4: {
+        grade: "Grado 4",
+        badge: "Flebitis Grave / Avanzada",
+        badgeStyle: "bg-red-200 text-red-900",
+        cardStyle: "bg-red-50 border-2 border-red-400 rounded-3xl p-6 shadow-md transition-all duration-300 flex flex-col items-center text-center",
+        title: "Retiro Urgente y Valoración Médica",
+        desc: "Presencia de exudado purulento, cordón venoso palpable >2.5 cm y dolor agudo.",
+        intervention: "Retirar el catéter con técnica aséptica, tomar cultivo de la punta del catéter si está indicado por protocolo institucional y aplicar tratamiento médico antibiótico/antiinflamatorio."
+      }
+    };
+
+    function updatePhlebitis(grade) {
+      const info = phlebitisData[grade];
+
+      document.getElementById('grade-display').textContent = info.grade;
+      
+      const badge = document.getElementById('status-badge');
+      badge.textContent = info.badge;
+      badge.className = `px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider mb-3 ${info.badgeStyle}`;
+
+      document.getElementById('result-card').className = info.cardStyle;
+      document.getElementById('action-title').textContent = info.title;
+      document.getElementById('action-desc').textContent = info.desc;
+      document.getElementById('intervention-text').textContent = info.intervention;
+    }
+  </script>
+</body>
+</html>
